@@ -1,4 +1,4 @@
-# digit-recognizer
+## digit-recognizer
 kaggle入门竞赛--Digit Recognizer的个人代码
 
 比赛地址：https://www.kaggle.com/c/digit-recognizer
@@ -12,7 +12,7 @@ kaggle入门竞赛--Digit Recognizer的个人代码
 能使得算法的效果不断提高
 
 
-# 1.引入数据集，并对像素点做归一化处理
+## 1.引入数据集，并对像素点做归一化处理
 
   train = pd.read_csv("train.csv")   
   test = pd.read_csv("test.csv")     
@@ -24,14 +24,14 @@ kaggle入门竞赛--Digit Recognizer的个人代码
   X_test = X_test.values.reshape(-1,28,28,1)    
 
  
-# 2.打印出某个训练样本看看
+## 2.打印出某个训练样本看看
  
  fig = plt.figure()   
  plt.imshow(X_train[2].reshape((28,28)),cmap=plt.cm.binary)   
  plt.show()   
 
 
-# 3.将像素矩阵转为一维向量  
+## 3.将像素矩阵转为一维向量  
 将28×28的像素矩阵转换为1×784的向量
 
 def img2vector(matrix):   
@@ -42,7 +42,7 @@ def img2vector(matrix):
     return returnVector   
 
  
-# 4.k近邻算法核心
+## 4.k近邻算法核心
 inX为需要分类的数据，dataSet为训练数据，labels为训练数据的标签，k为k的取值
 
 def classify0(inX,dataSet,labels,k):    
@@ -61,7 +61,7 @@ def classify0(inX,dataSet,labels,k):
     return sortedClassCount[0][0]   
 
 
-# 5.对测试集进行分类
+## 5.对测试集进行分类
 #拼成一个训练集合
 
 trainingMat = np.zeros((42000,784))   
@@ -75,7 +75,7 @@ for i in range(28000):
     print("the classifier came back with:%d" % classifierResult)   
 
 
-# 6.保存结果
+## 6.保存结果
 
 submission = pd.concat([pd.Series(range(1,28001),name = "ImageId"), pd.Series(resultArray,name="Label")],axis = 1)     
 submission.to_csv("mykNN.csv",index=False)    
