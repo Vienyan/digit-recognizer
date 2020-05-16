@@ -79,8 +79,11 @@ for i in range(28000):
 
 submission = pd.concat([pd.Series(range(1,28001),name = "ImageId"), pd.Series(resultArray,name="Label")],axis = 1)     
 submission.to_csv("mykNN.csv",index=False)    
- ` ` `
 
+ ## 7 使用随机森林方法
+  训练完后发现对28000个样本进行分类电脑性能有点顶不住，所以分成2000/组进行分类。
+  x_test = pd.read_csv('test.csv',skiprows=24000,nrows=4000) 
+  这里只读取了两千个测试样本
 
 
 
